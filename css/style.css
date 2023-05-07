@@ -1,0 +1,725 @@
+:root {
+  --red: #ff3939;
+  --black: #000000;
+  --white: #ffffff;
+  --secondary-lighter: #efefef;
+  --secondary-darker: #424242;
+  --font-family: 'Montserrat', sans-serif;
+  --border-radius: 16px;
+  --heading1: 4rem;
+  --heading3: 2rem;
+  --box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25);
+}
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: var(--font-family);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Headings */
+.heading-big {
+  font-size: 8rem;
+  font-weight: 800;
+}
+
+.heading1 {
+  font-size: var(--heading1);
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.heading3 {
+  font-size: var(--heading3);
+  font-weight: 500;
+}
+
+/* BTN */
+.btn-wrapper {
+  margin-top: 1.5rem;
+}
+
+.btn {
+  padding: 1.5rem 4rem;
+  border-radius: var(--border-radius);
+  font-size: 1.6rem;
+  transition: 0.3s ease-in-out;
+  /* box-shadow: var(--box-shadow); */
+}
+
+.btn-white {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.btn-white:hover {
+  background-color: var(--secondary-lighter);
+}
+
+.btn-black {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.btn-black:hover {
+  background-color: var(--secondary-darker);
+}
+
+/* container */
+.container {
+  max-width: 1300px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0rem 2rem;
+}
+
+/* navigation */
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 7rem;
+  width: 100%;
+  background-color: var(--white);
+  z-index: 10;
+}
+
+.navigation .logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  gap: 3rem;
+}
+
+.nav-items .nav-item {
+  position: relative;
+  font-size: 1.8rem;
+  padding: 0.3rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+}
+
+.nav-items .nav-item::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  transition: 0.3s ease-in-out;
+}
+
+.nav-items .nav-item:hover::before {
+  background-color: var(--black);
+}
+
+.nav-items .nav-search-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row !important;
+}
+
+.nav-items .nav-search-item .nav-search-form {
+  position: absolute;
+  transform: translateX(200%);
+}
+
+.nav-items .nav-search-item.active .nav-search-form {
+  position: relative;
+  transform: translateX(0%);
+}
+
+.nav-items .nav-search-item #nav-search {
+  width: 0;
+  margin-right: 1rem;
+  padding: 0.7rem 1.5rem;
+  outline: none;
+  border: none;
+  border: 1px solid var(--secondary-lighter);
+  border-radius: var(--border-radius);
+  transition: 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.nav-items .nav-search-item.active #nav-search {
+  width: 100%;
+  opacity: 1;
+}
+
+.nav-items .nav-search-item a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-items .nav-search-item.active a {
+  margin-left: 1rem;
+}
+
+.close-icon,
+.hamburger {
+  display: none;
+}
+
+.nav-items .nav-item.active {
+  border-bottom: 2px solid var(--black);
+  font-weight: 600;
+}
+
+.close-icon {
+  display: none;
+}
+
+.nav-items .nav-icons {
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.nav-items .nav-item img {
+  width: 24px;
+  height: 24px;
+}
+
+.nav-items .nav-item .login-wrapper {
+  position: relative;
+  display: none;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  position: absolute;
+  top: 200%;
+  right: -1rem;
+  background-color: var(--white);
+  padding: 3rem;
+  border-radius: var(--border-radius);
+}
+
+.nav-items .nav-item .login-wrapper.active {
+  display: flex;
+  transition: 0.3s ease-in-out;
+}
+
+.nav-items .nav-item .login-wrapper::before {
+  content: '';
+  height: 20px;
+  width: 20px;
+  background-color: var(--white);
+  position: absolute;
+  top: -0.4rem;
+  right: 1.5rem;
+  transform: rotate(45deg);
+  border-radius: 5px;
+}
+
+.nav-items .nav-item .login-wrapper .line {
+  width: 100%;
+  height: 2px;
+  background-color: var(--secondary-lighter);
+}
+
+.nav-items .nav-item .login-wrapper li {
+  transition: 0.3s ease-in-out;
+  border-bottom: 1px solid transparent;
+}
+
+.nav-items .nav-item .login-wrapper li:hover {
+  border-bottom: 1px solid var(--black);
+}
+
+/* hero */
+.hero {
+  /* display: flex; */
+  background-image: url('../assets/img/hero-bg.png');
+  width: 100%;
+  padding: 4rem 0 6rem;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  color: var(--white);
+  margin-top: 7rem;
+}
+
+.hero .container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3rem;
+  min-height: 30vh;
+}
+
+.hero .container .heading3 {
+  width: 50%;
+}
+
+/* just do it img */
+.just-do-it-img {
+  width: 100%;
+}
+
+.nike-logo-people {
+  width: 100%;
+}
+
+/* small card info */
+
+.mini-card-info-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 10rem;
+  width: 100%;
+  margin-top: -10rem;
+}
+
+.mini-card-info-wrapper .mini-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+  width: 45%;
+  background-color: var(--secondary-lighter);
+  border-radius: var(--border-radius);
+  height: 300px;
+  padding: 2rem 5rem;
+  box-shadow: var(--box-shadow);
+}
+
+.mini-card-info-wrapper .mini-card .heading1 {
+  color: var(--red);
+  font-style: italic;
+}
+
+.mini-card-info-wrapper .mini-card .shoe {
+  position: absolute;
+  top: 0;
+  right: -10%;
+  max-height: 500px;
+  height: 100%;
+  width: auto;
+}
+
+.mini-card-info-wrapper .mini-card .arrow-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  background-color: var(--white);
+  padding: 2rem;
+}
+
+.mini-card-info-wrapper .mini-card .arrow {
+  height: 15px;
+  width: 15px;
+  background-color: var(--white);
+}
+
+.mini-card-info-wrapper .mini-card p {
+  font-size: 2rem;
+  width: 50%;
+}
+
+/* mini card discount */
+.discount-card-info {
+  margin-bottom: 5rem;
+}
+
+.discount-card-info .mini-card-info-wrapper {
+  margin-top: 5rem;
+}
+
+/* summertime mood */
+.summertime-mood {
+  margin-top: 10rem;
+}
+
+.summertime-mood p {
+  margin: 2rem 0;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.summertime-mood .heading-big {
+  text-align: center;
+  font-style: italic;
+  font-weight: 800;
+}
+
+/* top sneakers */
+.top-sneakers {
+  padding: 3rem 0;
+}
+
+.top-sneakers .cards-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4rem;
+  margin-top: 6rem;
+}
+
+.top-sneakers .cards-wrapper .card {
+  position: relative;
+  display: flex;
+  box-shadow: var(--box-shadow);
+  gap: 2.5rem;
+  justify-content: flex-end;
+  flex-direction: column;
+  padding: 7rem 4rem;
+  height: 580px;
+  width: 350px;
+  background-color: var(--secondary-lighter);
+  border-radius: var(--border-radius);
+  transition: transform 0.3s ease-in-out;
+}
+
+.top-sneakers .cards-wrapper .card span {
+  font-size: 1.6rem;
+}
+
+.top-sneakers .cards-wrapper .card .arrow-wrapper {
+  position: absolute;
+  bottom: 3rem;
+  right: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  background-color: var(--white);
+  padding: 2rem;
+}
+
+.top-sneakers .cards-wrapper .card .arrow {
+  height: 15px;
+  width: 15px;
+  background-color: var(--white);
+}
+
+.top-sneakers .cards-wrapper .card .nike-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 370px;
+}
+
+.top-sneakers .cards-wrapper .card .shoe-show {
+  position: absolute;
+  top: 10%;
+  left: -5%;
+  /* transform: translate(-10%, 5%); */
+  height: 300px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.top-sneakers .cards-wrapper .card:hover .shoe-show {
+  transform: rotate(30deg);
+}
+
+.top-sneakers .cards-wrapper .card:hover {
+  transform: scale(1.05);
+}
+
+.buy-category {
+  margin: 4rem 0;
+}
+
+.buy-category .heading1 {
+  margin-bottom: 5rem;
+}
+
+.buy-category .buy-category-wrapper {
+  display: flex;
+}
+
+.buy-category .buy-category-wrapper .buy-category-description {
+  display: flex;
+  justify-content: center;
+  font-size: 3.6rem;
+  font-weight: bold;
+  font-style: italic;
+  align-items: center;
+  width: 50%;
+  aspect-ratio: 1/1;
+}
+
+.buy-category .buy-category-wrapper img {
+  width: 50%;
+  aspect-ratio: 1/1;
+  background-size: cover;
+  object-fit: cover;
+}
+
+.buy-category .looks-good {
+  font-weight: bolder;
+  font-style: italic;
+  margin: 7rem 0;
+  text-align: center;
+  font-size: 4rem;
+}
+
+.more-nike {
+  width: 100%;
+  background: url('../assets/img/nike-by-you.png');
+  background-size: cover;
+  object-fit: cover;
+  background-position: center;
+  padding: 5rem 0;
+  color: white;
+  margin-top: 4rem;
+}
+
+.more-nike .container {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.more-nike .description {
+  font-size: 1.6rem;
+}
+
+/* footer */
+.footer {
+  padding: 7rem 0;
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.footer a {
+  color: var(--white);
+  font-size: 1.8rem;
+}
+
+.footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer .container .footer-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.footer .container img {
+  max-width: 40%;
+  height: auto;
+}
+
+/* media */
+@media all and (max-width: 1024px) {
+  .navigation .container {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-items {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    max-width: 30rem;
+    width: 100%;
+    background-color: white;
+    z-index: 10;
+    flex-direction: column-reverse;
+    align-content: center;
+    justify-content: center;
+    transform: translateX(-100%);
+    transition: 0.3s ease-in-out;
+    box-shadow: var(--box-shadow);
+  }
+
+  .nav-items.active {
+    transform: translateX(0%);
+  }
+  .nav-items .nav-icons {
+    margin-left: unset;
+  }
+
+  img.hamburger {
+    cursor: pointer;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .close-icon {
+    cursor: pointer;
+    position: absolute;
+    top: 3rem;
+    right: 2rem;
+    display: block;
+    height: 20px;
+    width: 20px;
+  }
+
+  .close-icon img {
+    transition: 0.3s ease-in-out;
+  }
+
+  .close-icon:hover img {
+    transform: rotate(180deg) scale(1.5);
+  }
+
+  .nav-items .nav-item .login-wrapper {
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    position: relative;
+    right: 0rem;
+    top: 0;
+  }
+
+  .nav-items .nav-item .login-wrapper.active {
+    display: flex;
+    transition: 0.3s ease-in-out;
+  }
+
+  .nav-items .nav-item .login-wrapper::before {
+    content: '';
+    height: 20px;
+    width: 20px;
+    background-color: var(--white);
+    position: absolute;
+    top: -0.4rem;
+    right: 1.5rem;
+    transform: rotate(45deg);
+    border-radius: 5px;
+  }
+
+  /* hero */
+
+  .hero {
+    /* display: flex; */
+    background-image: unset;
+    background-color: var(--black);
+  }
+
+  .hero .container .heading3 {
+    width: 100%;
+  }
+
+  /* small card info */
+
+  .mini-card-info-wrapper {
+    flex-wrap: wrap;
+    gap: 10rem;
+    width: 100%;
+    margin-top: -10rem;
+  }
+
+  .mini-card-info-wrapper .mini-card {
+    width: 80%;
+  }
+  .mini-card-info-wrapper .mini-card p {
+    width: 60%;
+  }
+}
+
+@media all and (max-width: 571px) {
+  .heading1 {
+    font-size: 2rem;
+  }
+
+  .heading3 {
+    font-size: 1.6rem;
+  }
+  /* navigation */
+  .navigation .logo {
+    width: 150px;
+    height: auto;
+  }
+
+  /* small card info */
+  .mini-card-info-wrapper {
+    gap: 4rem;
+    margin-top: -5rem;
+  }
+  .mini-card-info-wrapper .mini-card {
+    padding: 3rem 5rem;
+    height: 200px;
+  }
+  .mini-card-info-wrapper .mini-card p {
+    font-size: 1.2rem;
+  }
+  .mini-card-info-wrapper .mini-card {
+    width: 100%;
+  }
+  .mini-card-info-wrapper .mini-card .shoe {
+    right: -10%;
+  }
+  /* summertime mood */
+  .summertime-mood .heading-big {
+    font-size: 4rem;
+  }
+
+  .summertime-mood p {
+    font-size: 1.6rem;
+  }
+
+  /* buy by the category */
+  .buy-category .buy-category-wrapper .buy-category-description {
+    font-size: 1.6rem;
+  }
+  .buy-category .looks-good {
+    font-size: 2.5rem;
+  }
+  /* footer */
+  .footer .container {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .footer .container ul {
+    order: 1;
+  }
+
+  .footer .container img {
+    margin-bottom: 3rem;
+  }
+}
